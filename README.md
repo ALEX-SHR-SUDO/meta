@@ -37,10 +37,12 @@ cp .env.example .env.local
 
 Edit `.env.local` and add your Pinata API keys:
 ```
-NEXT_PUBLIC_PINATA_API_KEY=your_pinata_api_key_here
-NEXT_PUBLIC_PINATA_SECRET_KEY=your_pinata_secret_key_here
+PINATA_API_KEY=your_pinata_api_key_here
+PINATA_SECRET_KEY=your_pinata_secret_key_here
 NEXT_PUBLIC_SOLANA_NETWORK=devnet
 ```
+
+**Note:** Pinata API keys are kept secure on the server-side and never exposed to the client.
 
 ## Usage
 
@@ -132,10 +134,12 @@ NEXT_PUBLIC_SOLANA_NETWORK=mainnet-beta
 
 ## Security
 
-- Never commit your `.env.local` file
-- Keep your Pinata API keys secure
-- Test on devnet before deploying to mainnet
-- Verify transaction details before signing
+- ✅ Pinata API keys are kept secure on the server-side via API routes
+- ✅ Never commit your `.env.local` file
+- ✅ Keep your Pinata API keys secure
+- ✅ Test on devnet before deploying to mainnet
+- ✅ Verify transaction details before signing
+- ✅ Secure wallet integration with industry-standard wallet adapters
 
 ## Troubleshooting
 

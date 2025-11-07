@@ -12,3 +12,4 @@ out/
 *.swp
 *.swo
 *~
+tsconfig.tsbuildinfo
