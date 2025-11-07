@@ -14,6 +14,7 @@ import {
   TOKEN_PROGRAM_ID,
   getAssociatedTokenAddress,
 } from '@solana/spl-token';
+import { calculateTokenAmount } from './helpers';
 
 export interface TokenMetadata {
   name: string;
@@ -91,7 +92,7 @@ export async function createTokenWithMetadata(
     );
 
     // Add instruction to mint tokens
-    const mintAmount = metadata.supply * Math.pow(10, metadata.decimals);
+    const mintAmount = calculateTokenAmount(metadata.supply, metadata.decimals);
     transaction.add(
       createMintToInstruction(
         mintPublicKey,
@@ -120,8 +121,9 @@ export async function createTokenWithMetadata(
     }, 'confirmed');
 
     console.log('Token created successfully. Mint address:', mintPublicKey.toString());
-    console.log('Metadata URI:', metadataUri);
-    console.log('Note: To add on-chain metadata, use a tool like Metaplex Sugar or the Metaplex CLI');
+    console.log('Metadata URI (off-chain):', metadataUri);
+    console.log('Note: This creates an SPL token with off-chain metadata stored on IPFS.');
+    console.log('The metadata URI is provided as a reference but not stored on-chain via Metaplex.');
 
     return mintPublicKey.toString();
   } catch (error) {

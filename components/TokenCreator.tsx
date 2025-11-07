@@ -5,6 +5,7 @@ import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 import { uploadImageToPinata, uploadMetadataToPinata } from '@/utils/pinata';
 import { createTokenWithMetadata, TokenMetadata } from '@/utils/solana';
+import { getSolanaNetwork, getSolanaExplorerUrl } from '@/utils/helpers';
 
 export default function TokenCreator() {
   const { connection } = useConnection();
@@ -301,7 +302,7 @@ export default function TokenCreator() {
                 <p className="text-green-200 font-semibold mb-2">Token Mint Address:</p>
                 <p className="text-white font-mono text-sm break-all">{mintAddress}</p>
                 <a
-                  href={`https://explorer.solana.com/address/${mintAddress}?cluster=${typeof window !== 'undefined' && process.env.NEXT_PUBLIC_SOLANA_NETWORK ? process.env.NEXT_PUBLIC_SOLANA_NETWORK : 'devnet'}`}
+                  href={getSolanaExplorerUrl(mintAddress)}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block mt-2 text-blue-300 hover:text-blue-200 underline"
@@ -315,7 +316,7 @@ export default function TokenCreator() {
           {/* Info Section */}
           <div className="mt-8 text-center text-gray-400 text-sm">
             <p>Make sure you have some SOL in your wallet to pay for transaction fees.</p>
-            <p className="mt-2">Network: {typeof window !== 'undefined' && process.env.NEXT_PUBLIC_SOLANA_NETWORK ? process.env.NEXT_PUBLIC_SOLANA_NETWORK : 'devnet'}</p>
+            <p className="mt-2">Network: {getSolanaNetwork()}</p>
           </div>
         </div>
       </div>
