@@ -2,12 +2,14 @@ export interface PinataUploadResponse {
   uri: string;
 }
 
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:3001';
+
 export async function uploadImageToPinata(file: File): Promise<string> {
   const formData = new FormData();
   formData.append('file', file);
 
   try {
-    const response = await fetch('/api/upload-image', {
+    const response = await fetch(`${BACKEND_URL}/api/upload-image`, {
       method: 'POST',
       body: formData,
     });
@@ -26,7 +28,7 @@ export async function uploadImageToPinata(file: File): Promise<string> {
 
 export async function uploadMetadataToPinata(metadata: object): Promise<string> {
   try {
-    const response = await fetch('/api/upload-metadata', {
+    const response = await fetch(`${BACKEND_URL}/api/upload-metadata`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
