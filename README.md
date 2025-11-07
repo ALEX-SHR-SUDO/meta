@@ -13,23 +13,20 @@ A modern web application for creating SPL tokens on Solana blockchain with custo
 
 ## Project Structure
 
-This project is organized into two main folders:
+This project has the Next.js frontend at the root with the backend in a separate folder:
 
 ```
 meta/
-├── frontend/              # Next.js frontend application
-│   ├── app/              # Next.js app directory (pages and layouts)
-│   ├── components/       # React components
-│   ├── utils/            # Frontend utility functions
-│   ├── package.json      # Frontend dependencies
-│   └── ...
-├── backend/              # Express backend API
-│   ├── src/              # Backend source code
-│   │   └── server.ts     # Main Express server
-│   ├── api/              # API route implementations
-│   ├── package.json      # Backend dependencies
-│   └── ...
-└── README.md             # This file
+├── app/                   # Next.js app directory (pages and layouts)
+├── components/            # React components
+├── utils/                 # Frontend utility functions
+├── backend/               # Express backend API
+│   ├── src/               # Backend source code
+│   │   └── server.ts      # Main Express server
+│   └── package.json       # Backend dependencies
+├── package.json           # Frontend dependencies
+├── next.config.js         # Next.js configuration
+└── README.md              # This file
 ```
 
 ## Prerequisites
@@ -68,14 +65,14 @@ PORT=3001
 ### 3. Setup Frontend
 
 ```bash
-cd ../frontend
+cd ..  # Back to root directory
 npm install
 
 # Configure environment variables
 cp .env.example .env.local
 ```
 
-Edit `frontend/.env.local`:
+Edit `.env.local` at the root:
 ```
 NEXT_PUBLIC_SOLANA_NETWORK=devnet
 NEXT_PUBLIC_BACKEND_URL=http://localhost:3001
@@ -97,7 +94,7 @@ The backend API will run on `http://localhost:3001`
 ### Terminal 2: Start Frontend Server
 
 ```bash
-cd frontend
+cd ..  # Back to root directory if you're in backend
 npm run dev
 ```
 
@@ -119,6 +116,15 @@ The frontend will run on `http://localhost:3000`
 
 ## Development
 
+### Frontend (at root)
+
+```bash
+npm run dev      # Development server
+npm run build    # Build for production
+npm start        # Start production server
+npm run lint     # Run ESLint
+```
+
 ### Backend
 
 ```bash
@@ -126,16 +132,6 @@ cd backend
 npm run dev      # Development server with auto-reload
 npm run build    # Build for production
 npm start        # Start production server
-```
-
-### Frontend
-
-```bash
-cd frontend
-npm run dev      # Development server
-npm run build    # Build for production
-npm start        # Start production server
-npm run lint     # Run ESLint
 ```
 
 ## Tech Stack

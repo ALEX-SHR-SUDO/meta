@@ -11,13 +11,13 @@ This guide will help you quickly set up and run the SPL Token Creator with the n
 ## Step 1: Install Dependencies
 
 ```bash
-# Option 1: Install both at once (from root directory)
+# Install frontend dependencies (from root directory)
 cd /path/to/meta
-npm run install:all
+npm install
 
-# Option 2: Install separately
-cd frontend && npm install
-cd ../backend && npm install
+# Install backend dependencies
+cd backend
+npm install
 ```
 
 ## Step 2: Configure Environment Variables
@@ -39,11 +39,11 @@ PORT=3001
 ### Frontend Configuration
 
 ```bash
-cd ../frontend
+cd ..  # Back to root
 cp .env.example .env.local
 ```
 
-Edit `frontend/.env.local`:
+Edit `.env.local` at the root:
 ```env
 NEXT_PUBLIC_SOLANA_NETWORK=devnet
 NEXT_PUBLIC_BACKEND_URL=http://localhost:3001
@@ -68,7 +68,7 @@ Backend server running on http://localhost:3001
 ### Terminal 2: Start Frontend
 
 ```bash
-cd frontend
+# From root directory
 npm run dev
 ```
 
@@ -125,37 +125,18 @@ Beautiful gradient design with:
 
 ```
 meta/
-├── frontend/              # Next.js application
-│   ├── app/              # Pages and layouts
-│   ├── components/       # React components
-│   └── utils/            # Utilities
-├── backend/              # Express API
-│   └── src/              # Server code
-└── README.md             # Full documentation
+├── app/                   # Next.js pages and layouts
+├── components/            # React components
+├── utils/                 # Frontend utilities
+├── backend/               # Express API
+│   └── src/               # Server code
+├── package.json           # Frontend dependencies
+└── README.md              # Full documentation
 ```
 
 ## Common Commands
 
-### From Root Directory
-
-```bash
-# Install all dependencies
-npm run install:all
-
-# Run frontend
-npm run dev:frontend
-
-# Run backend
-npm run dev:backend
-
-# Build frontend
-npm run build:frontend
-
-# Build backend
-npm run build:backend
-```
-
-### From Frontend Directory
+### Frontend (from root directory)
 
 ```bash
 npm run dev      # Development server
@@ -164,9 +145,10 @@ npm start        # Production server
 npm run lint     # Run linter
 ```
 
-### From Backend Directory
+### Backend
 
 ```bash
+cd backend
 npm run dev      # Development server
 npm run build    # Production build
 npm start        # Production server
@@ -180,7 +162,7 @@ npm start        # Production server
 
 ### Frontend can't connect to backend
 - Make sure backend is running on port 3001
-- Check `NEXT_PUBLIC_BACKEND_URL` in `frontend/.env.local`
+- Check `NEXT_PUBLIC_BACKEND_URL` in `.env.local` at the root
 
 ### Wallet won't connect
 - Install a Solana wallet extension (Phantom recommended)
