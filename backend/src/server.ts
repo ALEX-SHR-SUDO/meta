@@ -31,7 +31,7 @@ app.post('/api/upload-image', upload.single('file'), async (req: Request, res: R
     }
 
     const formData = new FormData();
-    const blob = new Blob([req.file.buffer], { type: req.file.mimetype });
+    const blob = new Blob([new Uint8Array(req.file.buffer)], { type: req.file.mimetype });
     formData.append('file', blob, req.file.originalname);
 
     const response = await axios.post(
