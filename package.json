@@ -14,9 +14,10 @@
     "@metaplex-foundation/umi-bundle-defaults": "^1.4.1",
     "@solana/spl-token": "^0.4.14",
     "@solana/wallet-adapter-base": "^0.9.27",
+    "@solana/wallet-adapter-phantom": "^0.9.28",
     "@solana/wallet-adapter-react": "^0.15.39",
     "@solana/wallet-adapter-react-ui": "^0.9.39",
-    "@solana/wallet-adapter-wallets": "^0.19.37",
+    "@solana/wallet-adapter-solflare": "^0.6.32",
     "@solana/web3.js": "^1.98.4",
     "@tailwindcss/forms": "^0.5.10",
     "@types/node": "^24.10.0",
@@ -33,5 +34,15 @@
   "devDependencies": {
     "eslint": "^9.39.1",
     "eslint-config-next": "^16.0.1"
+  },
+  "overrides": {
+    "glob": "^10.4.5",
+    "rimraf": "^5.0.10",
+    "inflight": "npm:@npmcli/inflight@latest",
+    "uuid": "^10.0.0",
+    "uuidv4": "npm:uuid@^10.0.0",
+    "@walletconnect/sign-client": "^2.19.1",
+    "@walletconnect/universal-provider": "^2.19.1",
+    "lodash.isequal": "npm:fast-deep-equal@^3.1.3"
   }
 }
