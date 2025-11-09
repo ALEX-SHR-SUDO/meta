@@ -233,6 +233,60 @@ The preview appears as a rounded thumbnail next to the upload button, giving you
 - Ensure the image size is reasonable (< 10MB)
 - Make sure the backend server is running
 
+## Deployment to Vercel
+
+This project is configured for easy deployment to Vercel with the included `vercel.json` configuration file.
+
+### Prerequisites
+
+1. A [Vercel account](https://vercel.com/signup)
+2. Pinata API credentials for IPFS uploads
+
+### Deployment Steps
+
+1. **Fork or clone this repository** to your GitHub account
+
+2. **Import the project to Vercel**:
+   - Go to [Vercel Dashboard](https://vercel.com/dashboard)
+   - Click "Add New Project"
+   - Import your repository
+
+3. **Configure Environment Variables** in Vercel:
+   - Go to Project Settings → Environment Variables
+   - Add the following variables:
+     ```
+     PINATA_API_KEY=your_pinata_api_key
+     PINATA_SECRET_KEY=your_pinata_secret_key
+     NEXT_PUBLIC_SOLANA_NETWORK=devnet
+     ```
+
+4. **Deploy**: Vercel will automatically build and deploy your application
+
+5. **Access your app**: Your app will be available at `https://your-project.vercel.app`
+
+### How it Works on Vercel
+
+- The Next.js frontend is deployed as a static site with server-side rendering
+- The backend API endpoints (`/api/upload-image`, `/api/upload-metadata`, `/api/health`) are deployed as serverless functions
+- No separate backend server is needed - all API routes are part of the Next.js application
+- The `NEXT_PUBLIC_BACKEND_URL` should be left empty in production (or set to your Vercel domain)
+
+### Local Development vs Production
+
+**Local Development** (using separate backend):
+```bash
+# Terminal 1: Start backend
+cd backend && npm run dev
+
+# Terminal 2: Start frontend
+npm run dev
+```
+
+**Production** (Vercel):
+- Backend API routes are integrated into Next.js as serverless functions
+- Single deployment command deploys everything
+- Environment variables are managed through Vercel dashboard
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
