@@ -3,7 +3,10 @@ import './globals.css';
 import { WalletContextProvider } from '@/components/WalletContextProvider';
 
 export const metadata: Metadata = {
-  title: 'SPL Token Creator | Create Solana Tokens with Metadata',
+  title: {
+    template: '%s | SPL Token Creator',
+    default: 'SPL Token Creator | Create Solana Tokens with Metadata',
+  },
   description: 'Create SPL tokens on Solana blockchain with custom metadata and logo. Upload to IPFS via Pinata.',
 };
 
