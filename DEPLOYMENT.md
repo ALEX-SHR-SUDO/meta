@@ -16,8 +16,11 @@ This guide explains how to deploy the frontend to Vercel and the backend to Rend
    - Import your GitHub repository
 
 2. **Configure Build Settings**
+   
+   **Important**: This project uses Vercel's Project Settings for configuration (not `vercel.json`). Configure the following in your Vercel project settings:
+   
    - **Framework Preset**: Next.js
-   - **Root Directory**: `frontend`
+   - **Root Directory**: `frontend` (required for monorepo structure)
    - **Build Command**: `npm run build` (default)
    - **Output Directory**: `.next` (default)
    - **Install Command**: `npm install` (default)
