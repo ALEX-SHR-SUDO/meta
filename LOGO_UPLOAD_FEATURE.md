@@ -8,7 +8,7 @@ The SPL Token Creator includes a user-friendly logo upload feature with real-tim
 
 ### Location
 - Component: `frontend/components/TokenCreator.tsx`
-- Lines: 38-48 (upload handler), 223-241 (UI)
+- Upload handler and preview logic in the component
 
 ### Functionality
 
