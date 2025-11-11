@@ -4,6 +4,8 @@ This guide explains how to deploy the frontend to Vercel and the backend to Rend
 
 ## Frontend Deployment (Vercel)
 
+This repository includes a `vercel.json` configuration file that handles the monorepo structure automatically. The configuration tells Vercel that the Next.js application is located in the `frontend` subdirectory, so deployment should work out of the box.
+
 ### Prerequisites
 - A [Vercel](https://vercel.com) account
 - Your repository connected to Vercel
@@ -17,7 +19,9 @@ This guide explains how to deploy the frontend to Vercel and the backend to Rend
 
 2. **Configure Build Settings**
    
-   **Important**: This project uses Vercel's Project Settings for configuration (not `vercel.json`). Configure the following in your Vercel project settings:
+   **Note**: This project includes a `vercel.json` configuration file that automatically configures the monorepo structure for deployment. The `vercel.json` file tells Vercel that the Next.js app is located in the `frontend` subdirectory.
+   
+   **Alternative Manual Configuration**: If you prefer to use Vercel's Project Settings instead, configure the following in your Vercel project settings (and remove the `vercel.json` file):
    
    - **Framework Preset**: Next.js
    - **Root Directory**: `frontend` (required for monorepo structure)
