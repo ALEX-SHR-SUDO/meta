@@ -13,19 +13,23 @@ A modern web application for creating SPL tokens on Solana blockchain with custo
 
 ## Project Structure
 
-This project has the Next.js frontend at the root with the backend in a separate folder:
+This project is organized as a monorepo with separate frontend and backend folders:
 
 ```
 meta/
-├── app/                   # Next.js app directory (pages and layouts)
-├── components/            # React components
-├── utils/                 # Frontend utility functions
-├── backend/               # Express backend API
+├── frontend/              # Next.js Frontend Application
+│   ├── app/               # Next.js app directory (pages and layouts)
+│   ├── components/        # React components
+│   ├── utils/             # Frontend utility functions
+│   ├── package.json       # Frontend dependencies
+│   ├── next.config.js     # Next.js configuration
+│   └── .env.example       # Frontend environment template
+├── backend/               # Express Backend API
 │   ├── src/               # Backend source code
 │   │   └── server.ts      # Main Express server
-│   └── package.json       # Backend dependencies
-├── package.json           # Frontend dependencies
-├── next.config.js         # Next.js configuration
+│   ├── package.json       # Backend dependencies
+│   └── .env.example       # Backend environment template
+├── package.json           # Monorepo orchestration scripts
 └── README.md              # This file
 ```
 
@@ -65,14 +69,14 @@ PORT=3001
 ### 3. Setup Frontend
 
 ```bash
-cd ..  # Back to root directory
+cd frontend
 npm install
 
 # Configure environment variables
 cp .env.example .env.local
 ```
 
-Edit `.env.local` at the root:
+Edit `frontend/.env.local` and configure:
 ```
 NEXT_PUBLIC_SOLANA_NETWORK=devnet
 NEXT_PUBLIC_BACKEND_URL=http://localhost:3001
@@ -94,11 +98,19 @@ The backend API will run on `http://localhost:3001`
 ### Terminal 2: Start Frontend Server
 
 ```bash
-cd ..  # Back to root directory if you're in backend
+cd frontend
 npm run dev
 ```
 
 The frontend will run on `http://localhost:3000`
+
+### Alternative: Use Root Scripts
+
+From the root directory, you can also use:
+```bash
+npm run dev:backend    # Start backend
+npm run dev:frontend   # Start frontend
+```
 
 ### Using the Application
 
@@ -116,9 +128,10 @@ The frontend will run on `http://localhost:3000`
 
 ## Development
 
-### Frontend (at root)
+### Frontend
 
 ```bash
+cd frontend
 npm run dev      # Development server
 npm run build    # Build for production
 npm start        # Start production server
@@ -132,6 +145,18 @@ cd backend
 npm run dev      # Development server with auto-reload
 npm run build    # Build for production
 npm start        # Start production server
+```
+
+### From Root (Monorepo Commands)
+
+```bash
+npm run install:all       # Install dependencies for both
+npm run dev:frontend      # Start frontend dev server
+npm run dev:backend       # Start backend dev server
+npm run build:frontend    # Build frontend
+npm run build:backend     # Build backend
+npm run start:frontend    # Start frontend production server
+npm run start:backend     # Start backend production server
 ```
 
 ## Tech Stack
