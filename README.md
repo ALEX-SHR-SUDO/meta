@@ -258,6 +258,15 @@ The preview appears as a rounded thumbnail next to the upload button, giving you
 - Ensure the image size is reasonable (< 10MB)
 - Make sure the backend server is running
 
+## Deployment
+
+Ready to deploy your application to production?
+
+- **Frontend**: Deploy to [Vercel](https://vercel.com) for optimal Next.js performance
+- **Backend**: Deploy to [Render](https://render.com) for easy Node.js hosting
+
+See the complete deployment guide: [DEPLOYMENT.md](./DEPLOYMENT.md)
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
