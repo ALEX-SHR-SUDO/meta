@@ -3,6 +3,7 @@ import cors from 'cors';
 import multer from 'multer';
 import axios from 'axios';
 import dotenv from 'dotenv';
+import FormData from 'form-data';
 
 dotenv.config();
 
@@ -31,15 +32,17 @@ app.post('/api/upload-image', upload.single('file'), async (req: Request, res: R
     }
 
     const formData = new FormData();
-    const blob = new Blob([new Uint8Array(req.file.buffer)], { type: req.file.mimetype });
-    formData.append('file', blob, req.file.originalname);
+    formData.append('file', req.file.buffer, {
+      filename: req.file.originalname,
+      contentType: req.file.mimetype,
+    });
 
     const response = await axios.post(
       'https://api.pinata.cloud/pinning/pinFileToIPFS',
       formData,
       {
         headers: {
-          'Content-Type': 'multipart/form-data',
+          ...formData.getHeaders(),
           pinata_api_key: pinataApiKey,
           pinata_secret_api_key: pinataSecretKey,
         },
