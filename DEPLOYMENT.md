@@ -19,15 +19,15 @@ This repository includes a `vercel.json` configuration file that handles the mon
 
 2. **Configure Build Settings**
    
-   **Note**: This project includes a `vercel.json` configuration file that automatically configures the monorepo structure for deployment. The `vercel.json` file tells Vercel that the Next.js app is located in the `frontend` subdirectory.
+   **Note**: This project includes a `vercel.json` configuration file that automatically configures the monorepo structure for deployment. The configuration uses modern Vercel settings to build the Next.js app located in the `frontend` subdirectory.
    
-   **Alternative Manual Configuration**: If you prefer to use Vercel's Project Settings instead, configure the following in your Vercel project settings (and remove the `vercel.json` file):
+   The `vercel.json` file includes:
+   - **Framework**: Next.js
+   - **Build Command**: `cd frontend && npm install && npm run build`
+   - **Output Directory**: `frontend/.next`
+   - **Install Command**: `npm install --prefix frontend`
    
-   - **Framework Preset**: Next.js
-   - **Root Directory**: `frontend` (required for monorepo structure)
-   - **Build Command**: `npm run build` (default)
-   - **Output Directory**: `.next` (default)
-   - **Install Command**: `npm install` (default)
+   These settings are automatically applied when you deploy to Vercel, so no manual configuration is needed.
 
 3. **Configure Environment Variables**
    
