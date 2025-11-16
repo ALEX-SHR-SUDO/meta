@@ -2,6 +2,8 @@
 node_modules/
 frontend/node_modules/
 backend/node_modules/
+metafrontend/node_modules/
+metabackend/node_modules/
 
 # Build outputs
 .next/
@@ -14,6 +16,12 @@ frontend/build/
 frontend/out/
 backend/dist/
 backend/build/
+metafrontend/.next/
+metafrontend/dist/
+metafrontend/build/
+metafrontend/out/
+metabackend/dist/
+metabackend/build/
 
 # Environment files
 .env.local
@@ -22,6 +30,10 @@ frontend/.env.local
 frontend/.env
 backend/.env.local
 backend/.env
+metafrontend/.env.local
+metafrontend/.env
+metabackend/.env.local
+metabackend/.env
 
 # Logs
 *.log
