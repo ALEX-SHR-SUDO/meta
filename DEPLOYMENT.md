@@ -25,7 +25,7 @@ This repository includes a `vercel.json` configuration file that handles the mon
    - **Framework**: Next.js
    - **Build Command**: `cd frontend && npm install && npm run build`
    - **Output Directory**: `frontend/.next`
-   - **Install Command**: `npm install --prefix frontend`
+   - **Install Command**: `cd frontend && npm install`
    
    These settings are automatically applied when you deploy to Vercel, so no manual configuration is needed.
 
